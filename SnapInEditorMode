@@ -1,0 +1,16 @@
+[ExecuteInEditMode]
+public class EditorSnap : MonoBehaviour
+{
+    [SerializeField] [Range(1f, 20f)] float gridSize = 10f;      // The "Range" limits the grid in inspector mode
+
+    private void Update()
+    {
+        Vector3 snapPos;
+        snapPos.x = Mathf.RoundToInt(transform.position.x / gridSize) * gridSize;
+        snapPos.z = Mathf.RoundToInt(transform.position.z / gridSize) * gridSize;
+
+        transform.position = new Vector3(snapPos.x, 0f, snapPos.z);
+    }
+}
+
+//Makes game object to witch it is attached to snap to every 10f in the Editor in x and z.
